@@ -59,10 +59,3 @@ AND F00CACRF = 'II'
 AND fp0cdu != 'IP0' 
 AND fp0ddr > 1210929 
 AND FP0DUNKL = 'G050S22042100104'
-
-SELECT *
-FROM afilb01.f00pf  join afilb01.fp0pf
-on afilb01.f00pf.f00cdu = afilb01.fp0pf.fp0cdu
-AND F00CACRF = 'II'
-AND fp0cdu != 'IP0' 
-AND fp0ddr > 1210929 
