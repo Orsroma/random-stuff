@@ -1,0 +1,68 @@
+SELECT 
+Case when fp0cdu = 'IP3' or fp0cdu = 'IPA' or fp0cdu = 'IPL' or fp0cdu = 'IR5' then 'Абсолют'
+ELSE Case when fp0cdu = 'IP1' then 'Альфастрахование'
+ELSE CASE WHEN fp0cdu = 'IPG' THEN 'Альфастрахование нулевое списание'
+ELSE CASE WHEN fp0cdu = 'IR0' THEN 'Альфастрахование нулевое списание пролонг'
+ELSE Case when fp0cdu = 'IPC' or fp0cdu = 'IPN' or fp0cdu = 'IR7' then 'ВСК'
+ELSE Case when fp0cdu = 'IP7' or fp0cdu = 'IPI' or fp0cdu = 'IR2' then 'ВТБ'
+ELSE Case when fp0cdu = 'IPQ' or fp0cdu = 'IRA' then 'Зетта' 
+ELSE Case when fp0cdu = 'IPD' or fp0cdu = 'IPO' or fp0cdu = 'IR8' then 'Ингосстрах'
+ELSE Case when fp0cdu = 'IPF' then 'Коробочное страхование Все включено' 
+ELSE Case when fp0cdu = 'IP6' or fp0cdu = 'IPH' or fp0cdu = 'IR1' or fp0cdu = 'IPR' or fp0cdu = 'IRD' then 'Пари'
+ELSE Case when fp0cdu = 'IP5' or fp0cdu = 'IRB' then 'Прочая СК' 
+ELSE Case when fp0cdu = 'IP4' or fp0cdu = 'IP9' or fp0cdu = 'IPK' or fp0cdu = 'IR4' then 'РЕСО'
+ELSE Case when fp0cdu = 'IPE' or fp0cdu = 'IPP' or fp0cdu = 'IR9' then 'Росгосстрах'
+ELSE Case when fp0cdu = 'IPB' or fp0cdu = 'IPM' or fp0cdu = 'IR6' then 'СОГАЗ'
+ELSE Case when fp0cdu = 'IRC' or fp0cdu = 'IPS' then 'Согласие' 
+ELSE Case when fp0cdu = 'IP8' or fp0cdu = 'IPJ' or fp0cdu = 'IR3' then 'Югория'
+ELSE fp0cdu
+END END END END END END end END END END end end END END END end  "Название Страховой компании",
+Case when FP0AMDUC = 0 THEN FP0DUAD5 / 100
+else FP0AMDUC / 100
+end "страховая премия руб",
+FP0DUNDU AS"Номер доп. услуги",
+FP0DUNST AS"Номер договора с клиентом",
+FP0AMDG / 100 AS"Страховая сумма",
+FP0CKLCM AS"Код клиента - мнемоника",
+substr(CAST(FP0DDR AS VARCHAR(30)),6,2)||'.'||substr(CAST(FP0DDR AS VARCHAR(30)),4,2)||'.20'||substr(CAST(FP0DDR AS VARCHAR(30)),2,2) AS"Дата регистрации доп. услуги", 
+
+substr(CAST(FP0STDDU AS VARCHAR(30)),6,2)||'.'||substr(CAST(FP0STDDU AS VARCHAR(30)),4,2)||'.20'||substr(CAST(FP0STDDU AS VARCHAR(30)),2,2) AS"Дата начала действия доп. услуги",
+
+substr(CAST(FP0FLDDU AS VARCHAR(30)),6,2)||'.'||substr(CAST(FP0FLDDU AS VARCHAR(30)),4,2)||'.20'||substr(CAST(FP0FLDDU AS VARCHAR(30)),2,2) AS"Дата завершения действия доп. услуги",
+
+
+
+
+
+
+CASE WHEN FP0ADDUP = '9999999'  THEN '9999999' 
+ELSE substr(CAST(FP0ADDUP AS VARCHAR(30)),6,2)||'.'||substr(CAST(FP0ADDUP AS VARCHAR(30)),4,2)||'.20'||substr(CAST(FP0ADDUP AS VARCHAR(30)),2,2) END "Дата выставления счета к оплате",
+
+FP0DUNKL AS"Номер кредитного договора",
+Case when FP0DUACT = 'A' then 'Активна'
+ELSE Case when FP0DUACT = 'B' then 'Ожидает активации'
+ELSE Case when FP0DUACT = 'D' then 'Услуга удалена'
+ELSE Case when FP0DUACT = 'L' then 'Действие завершено'
+ELSE Case when FP0DUACT = 'M' then 'Действие завершено досрочно'
+ELSE Case when FP0DUACT = 'S' then 'Действие приостановлено'
+end end end end end end "Активность доп услуги ", 
+ 
+FP0DUAD1 / 100 AS"Страх. пр. имущество Заемщи",
+FP0DUAD2 / 100 AS"Страх. пр. титул Заемщик",
+FP0DUAD3 / 100 AS"Страх. пр. жизнь Заемщик",
+FP0DUAD4 / 100 AS"Страх. пр. жизнь Созаемщик",
+FP0REGDU / 100 AS"Регион регистрации доп. услуги"
+
+ FROM afilb01.f00pf  join afilb01.fp0pf
+on afilb01.f00pf.f00cdu = afilb01.fp0pf.fp0cdu
+AND F00CACRF = 'II'
+AND fp0cdu != 'IP0' 
+AND fp0ddr > 1210929 
+AND FP0DUNKL = 'G050S22042100104'
+
+SELECT *
+FROM afilb01.f00pf  join afilb01.fp0pf
+on afilb01.f00pf.f00cdu = afilb01.fp0pf.fp0cdu
+AND F00CACRF = 'II'
+AND fp0cdu != 'IP0' 
+AND fp0ddr > 1210929 

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="658043f6-a568-4305-8d97-340a688de88d" activeEnvironment="Default" name="создание бага черз апи" resourceRoot="${projectDir}" soapui-version="5.6.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:RestService" id="21cac5bc-3375-49b3-a250-9ee9d33ca6c6" wadlVersion="http://wadl.dev.java.net/2009/02" name="http://jira.moscow.alfaintra.net" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart=""/><con:endpoints><con:endpoint>http://jira.moscow.alfaintra.net</con:endpoint></con:endpoints><con:resource name="создание" path="/rest/api/2/issue/" id="d740e0a0-c87f-4768-8977-d2658a52400e"><con:settings/><con:parameters/><con:method name="Метод" id="4fc8f405-afb2-4df6-a4d4-87edcaffdc6e" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="FAULT"><con:mediaType>application/json;charset=UTF-8</con:mediaType><con:status>400 401</con:status><con:params/><con:element xmlns:bulk="http://jira.moscow.alfaintra.net/rest/api/2/issue/bulk">bulk:Fault</con:element></con:representation><con:representation type="FAULT"><con:mediaType>text/html;charset=UTF-8</con:mediaType><con:status>405 415 401</con:status><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json;charset=UTF-8</con:mediaType><con:status>200 201</con:status><con:params/><con:element xmlns:sfa="http://jira.moscow.alfaintra.net/rest/api/2/issue/SFAONPEGA-57304">sfa:Response</con:element></con:representation><con:representation type="REQUEST"><con:mediaType>application/x-www-form-urlencoded</con:mediaType><con:params/></con:representation><con:request name="создание бага" id="6d8129ba-6f80-4d29-ada5-7b39805920bc" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://jira.moscow.alfaintra.net</con:endpoint><con:request>{
+  "fields": {
+    "project": {
+      "key": "MRTGINSUR"
+    },
+    "summary": "название бага.",
+    "description": " *Номер заявки:*  \n \n \n *Шаги воспроизведения:*  \n \n \n *Фактический результат:*   \n \n \n *Ожидаемый результат:*   \n  \n  *Окружение:* ",
+    "issuetype": {
+      "id": "1"
+    },
+    "customfield_34096": [
+      {
+        "self": "https://jira.moscow.alfaintra.net/rest/api/2/customFieldOption/221014",
+        "value": "Ошибка тестирования",
+        "id": "221014",
+        "disabled": false
+      }
+    ]
+  }
+}
+// "value":                                                 "id":
+//"Ошибка тестирования",                                    "221014",
+//"Ошибка аналитики",                                       "220692",
+//"Ошибка разработки",                                      "220693",
+//"Дефект смежной системы",                                 "220694",
+//"Системные дефекты (проблемы платформы)",                 "220695",
+//"Ошибка установки/настройки программного продукта",       "220696",
+//"Отсутствие полного регресса",                            "224460",
+//"Проблема доступности сред",                              "236402",
+//"Ошибка бизнес-требований",                               "232757",
+//"Ошибка данных",                                          "236401",</con:request><con:originalUri>http://jira.moscow.alfaintra.net/rest/api/2/issue/bulk</con:originalUri><con:credentials><con:username>U_M1213123BTB</con:username><con:password>Ors</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:preemptive>true</con:preemptive><con:authType>Preemptive</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder/></con:request></con:method></con:resource></con:interface><con:properties><con:property><con:name>jiraID</con:name><con:value>MRTGINSUR-873</con:value></con:property></con:properties><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
